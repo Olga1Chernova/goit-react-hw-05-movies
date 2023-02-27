@@ -17,7 +17,7 @@ const MovieInfoPage = () => {
                 console.log(response.data.status_message)
             }
         };
-        fetchMovieInfo(id);
+        fetchMovieInfo();
     },[id])
 
     return (
