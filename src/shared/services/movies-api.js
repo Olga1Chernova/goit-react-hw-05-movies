@@ -7,7 +7,11 @@ const instance = axios.create({
     }
 }) //params for all project
 export const trendingMovies = async () => {
-    const { data } = await instance.get(
-        `/trending/movie/day`);
+    const { data } = await instance.get('/trending/movie/day');
     return data;
+}
+
+export const getMovieInfoById = async (id) => {
+  const {data} = await instance.get(`/movie/${id}`);
+  return data;
 }
