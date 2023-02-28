@@ -1,7 +1,9 @@
+//import css from './movies-page.module.scss';
 
+import MovieSearch from 'modules/MovieSearch/MovieSearchForm/MovieSearchForm';
 
 const MoviesPage = () => {
-  return <h1>Movies Page</h1>;
+  return <MovieSearch />;
 };
 
 export default MoviesPage;
