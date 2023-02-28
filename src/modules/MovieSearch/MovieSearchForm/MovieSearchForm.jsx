@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FcSearch } from 'react-icons/fc';
 
 import css from './movie-search-form.module.scss';
-import initialState from '../initialState';
+import initialState from './initialState';
 import useForm from '../../../shared/hooks/useForm';
 
 const MovieSearchForm = ({ onSubmit }) => {
