@@ -1,0 +1,28 @@
+.mainWrapper{
+    display: flex;
+    margin-top: 30px;
+}
+
+.imgWrapper{
+    margin-left: 30px;
+}
+
+.textWrapper{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.poster{
+    max-width: 300px;
+}
+
+.title{
+    color: rgb(218, 102, 102);
+}
+
+.vote{
+    border: 1px solid red;
+    background-color: rgb(218, 102, 102);
+    display: inline;
+    padding: 5px;
+}
