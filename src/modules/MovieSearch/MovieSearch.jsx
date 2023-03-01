@@ -1,17 +1,21 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import MovieSearchForm from './MovieSearchForm/MovieSearchForm';
 import MovieSearchList from './MovieSearchList/MovieSearchList';
 
 import Loader from 'shared/components/Loader/Loader';
 
-import { searchMovies } from '../../shared/services/posts-api';
+import { searchMovies } from '../../shared/services/movies-api';
 
 const MovieSearch = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [search, setSearch] = useState('');
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get('search');
+  const page = searchParams.get('page');
 
   
   useEffect(() => {
@@ -22,7 +26,7 @@ const MovieSearch = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const data = await searchMovies(search);
+        const data = await searchMovies(search, page);
         setItems(prevItems => [...prevItems, ...data.results]);
       } catch (error) {
         setError(error.message);
@@ -31,12 +35,12 @@ const MovieSearch = () => {
       }
     };
     fetchMovies();
-  }, [search, setLoading, setItems, setError]);
+  }, [search, setLoading, setItems, setError, page]);
 
   const FindMovies = useCallback(({ search }) => {
-    setSearch({ search });
+    setSearchParams({ search, page: 1 });
     setItems([]);
-  }, [setSearch, setItems]);
+  }, [setSearchParams, setItems]);
 
 
 

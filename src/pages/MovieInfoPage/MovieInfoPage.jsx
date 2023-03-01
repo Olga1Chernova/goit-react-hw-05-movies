@@ -22,15 +22,18 @@ const MovieInfoPage = () => {
   }, [id]);
 
   if (movie.genres === undefined) {
-    return;
+    return "There are no genres for this movie";
     }
+    
 
-    const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    //const poster = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
     const genre = movie.genres.map(genre => genre.name).join(', ');
-
-    const unavailableImg =
-      'https://seekersguidance.org/wp-content/uploads/2022/10/Movie-Theatre-Film-Cinema.jpg';
+    const poster =
+    movie.poster_path === null
+      ? 'https://seekersguidance.org/wp-content/uploads/2022/10/Movie-Theatre-Film-Cinema.jpg'
+      : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  
 
     
   return (
@@ -38,7 +41,7 @@ const MovieInfoPage = () => {
       <div className={css.imgWrapper}>
         <img
           className={css.poster}
-          src={poster || unavailableImg}
+          src={poster}
           alt="movie information"
         />
       </div>

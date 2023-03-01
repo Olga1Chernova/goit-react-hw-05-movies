@@ -10,7 +10,7 @@ const MovieSearchList = ({ items }) => {
     </Link>
   ));
 
-  return <ul>{elements}</ul>;
+  return <ul className={css.list}>{elements}</ul>;
 };
 
 export default memo(MovieSearchList);
