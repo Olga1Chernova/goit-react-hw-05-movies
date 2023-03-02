@@ -26,3 +26,27 @@
     display: inline;
     padding: 5px;
 }
+
+.button{
+    display: block;
+    margin-left: 30px;
+    width: 90px;
+    height: 40px;
+    font-size: 15px;
+    color:red;
+    background-color: black;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:hover{
+        border:1px solid red;
+    }
+}
+
+.cast{
+    text-decoration: none;
+    margin-left: 370px;
+    color: rgb(218, 102, 102);
+    font-weight: 700;
+    font-size: 24px;
+}
