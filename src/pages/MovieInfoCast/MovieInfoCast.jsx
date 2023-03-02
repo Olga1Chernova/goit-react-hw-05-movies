@@ -23,6 +23,10 @@ const MovieInfoCast = () => {
     }, [id])
 
 
+    if (cast.length === 0) {
+      return 'There are no cast!!!';
+    }
+
     const elements = cast.map(
       ({ id, character, original_name, profile_path }) => (
         <li key={id}>

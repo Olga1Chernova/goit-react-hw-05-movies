@@ -53,7 +53,8 @@ const MovieInfoPage = () => {
           <p>{genre}</p>
         </div>
       </div>
-      <Link className={css.cast} to={'cast'}>Cast</Link>
+      <Link className={css.movieInfo} to={'cast'}>Cast</Link>
+      <Link className={css.movieInfo} to={'reviews'}>Reviews</Link>
       <Outlet />
     </>
   );
