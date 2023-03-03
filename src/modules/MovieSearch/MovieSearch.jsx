@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import MovieSearchForm from './MovieSearchForm/MovieSearchForm';
-import MovieSearchList from './MovieSearchList/MovieSearchList';
+import MovieList from 'shared/components/MovieList/MovieList';
 
 import Loader from 'shared/components/Loader/Loader';
 
@@ -47,7 +47,7 @@ const MovieSearch = () => {
   return (
     <>
       <MovieSearchForm onSubmit={FindMovies} />
-      <MovieSearchList items={items}/>
+      <MovieList items={items}/>
       {error && <p>{error}</p>}
       {loading && <Loader/>}
     </>

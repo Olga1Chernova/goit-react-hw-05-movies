@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { trendingMovies } from '../../shared/services/movies-api.js';
 
-import TrendingMoviesList from './TrendingMoviesList/TrendingMoviesList.jsx';
+import MovieList from 'shared/components/MovieList/MovieList.jsx';
 import Loader from 'shared/components/Loader/Loader.jsx';
 
 const Movies = () => {
@@ -32,7 +32,7 @@ const Movies = () => {
     <>
       {error && <p>Oops. Something went wrong :( </p>}
       {loading && <Loader />}
-          <TrendingMoviesList items={items} />
+          <MovieList items={items} />
     </>
   );
 };

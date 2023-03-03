@@ -1,13 +1,17 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from 'react-router-dom';
 
-import MoviesPage from 'pages/MoviesPage/MoviesPage';
-import HomePage from 'pages/HomePage/HomePage';
-import MovieInfoPage from 'pages/MovieInfoPage/MovieInfoPage';
-import MovieInfoCast from 'pages/MovieInfoCast/MovieInfoCast';
-import MovieInfoReviews from 'pages/MovieInfoReviews/MovieInfoReviews';
+import Loader from "shared/components/Loader/Loader";
+
+const MoviesPage = lazy(()=> import('pages/MoviesPage/MoviesPage'));
+const  HomePage = lazy(()=> import('pages/HomePage/HomePage'));
+const MovieInfoPage = lazy(()=>import('pages/MovieInfoPage/MovieInfoPage'));
+const MovieInfoCast = lazy(()=>import('pages/MovieInfoCast/MovieInfoCast'));
+const MovieInfoReviews = lazy(() =>import('pages/MovieInfoReviews/MovieInfoReviews'));
 
 const UserRoutes = () => {
-    return (
+  return (
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
@@ -17,7 +21,8 @@ const UserRoutes = () => {
         </Route>
         <Route path="*" element={<HomePage />} />
       </Routes>
-    );
+    </Suspense>
+  );
 }
 
 export default UserRoutes;

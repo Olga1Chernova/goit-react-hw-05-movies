@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useParams, useNavigate, useLocation } from 'react-router-dom';
 
 import { getMovieInfoById } from '../../shared/services/movies-api';
 
@@ -9,8 +9,13 @@ const MovieInfoPage = () => {
   const [movie, setMovie] = useState([]);
   const { id } = useParams();
 
+  const location = useLocation();
+  //console.log(location)
+  const from = location.state?.from || "/";
+
   const navigate = useNavigate(); //changes url
-  const goBack = useCallback(() => navigate(-1), [navigate]);
+  const goBack = useCallback(() => navigate(from), [navigate, from]);
+
   useEffect(() => {
     const fetchMovieInfo = async () => {
       try {
@@ -38,7 +43,10 @@ const MovieInfoPage = () => {
     
   return (
     <>
-      <button className={css.button} onClick={goBack}> &#8592;  Go back</button>
+      <button className={css.button} onClick={goBack}>
+        {' '}
+        &#8592; Go back
+      </button>
       <div className={css.mainWrapper}>
         <div className={css.imgWrapper}>
           <img className={css.poster} src={poster} alt="movie information" />
@@ -53,8 +61,12 @@ const MovieInfoPage = () => {
           <p>{genre}</p>
         </div>
       </div>
-      <Link className={css.movieInfo} to={'cast'}>Cast</Link>
-      <Link className={css.movieInfo} to={'reviews'}>Reviews</Link>
+      <Link className={css.movieInfo} state={{ from }} to={'cast'}>
+        Cast
+      </Link>
+      <Link className={css.movieInfo} state={{ from }} to={'reviews'}>
+        Reviews
+      </Link>
       <Outlet />
     </>
   );
